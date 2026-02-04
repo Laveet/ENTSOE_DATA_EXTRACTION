@@ -1,14 +1,14 @@
-from src.factory import DataFetcherFactory
+from src.factory import Get_Data
 
 # add data_type : either price pr load 
 # zone
 # start
 # end
 
-fetcher = DataFetcherFactory.create(data_type="price",zone="10YAT-APG------L",
-    start="202307252200",
-    end="202307252300")   # object created
-df = fetcher.fetch_data()   
+df = Get_Data.load(zone="10YAT-APG------L",
+    start="202602022200",
+    end="202602032200")   # object created
+
 
 
 print(df.shape)

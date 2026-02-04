@@ -3,8 +3,10 @@
 import pandas as pd
 from src.base import EntsoeBaseFetcher
 import xml.etree.ElementTree as ET
+from src.load.load_config import load_config
 
-class LoadFetcher(EntsoeBaseFetcher):
+
+class LoadFetcher(load_config):
     """
     Fetches Actual Total Load (A65) from ENTSO-E for a given zone and time period.
     Only includes 15-min resolution data (PT15M).
@@ -12,14 +14,19 @@ class LoadFetcher(EntsoeBaseFetcher):
 
     def params(self):
         """Build ENTSO-E API parameters for actual total load"""
-        return {
-            "documentType": "A65",                   # Actual Total Load
-            "processType": "A16",        # Actual Total Load
-            "outBiddingZone_Domain": self.zone,
-            "periodStart": self.start,
-            "periodEnd": self.end,
-             # Actual Load
-        }
+        params=self.parameters()
+        params["processType"]="A16"
+        return params
+
+
+        # return {
+        #     "documentType": "A65",                   # Actual Total Load
+        #     "processType": "A16",        # Actual Total Load
+        #     "outBiddingZone_Domain": self.zone,
+        #     "periodStart": self.start,
+        #     "periodEnd": self.end,
+        #      # Actual Load
+        # }
 
     def read_xml(self, root: ET.Element) -> pd.DataFrame:
         """Parse XML response and return DataFrame with timestamps and load values"""

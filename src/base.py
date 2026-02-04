@@ -8,18 +8,18 @@ from src.loger import logging
 import sys
 import os
 
-class EntsoeBaseFetcher(ABC):
+class EntsoeBaseFetcher():
     def __init__(self,zone:str,start:str,end:str):
         self.zone=zone
         self.start=start
         self.end=end
-    @abstractmethod
+    # @abstractmethod
     def params(self)->dict:
         pass
-    @abstractmethod
+    # @abstractmethod
     def read_xml(self, root: ET.Element)->pd.DataFrame:
         pass
-    @abstractmethod
+    # @abstractmethod
     def output_file(self)->str:
         pass
 
