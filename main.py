@@ -5,9 +5,9 @@ from src.factory import Get_Data
 # start
 # end
 
-df = Get_Data.load(zone="10YAT-APG------L",
-    start="202602022200",
-    end="202602032200")   # object created
+df = Get_Data.generation(zone="10YAT-APG------L",
+    start="202502022000",
+    end="202502022300")  # object created
 
 
 

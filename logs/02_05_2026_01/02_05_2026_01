@@ -1,0 +1,6 @@
+2026-02-05 01:26:26,402 | INFO     | root | base.py:38 | Data saved to data\price.csv
+2026-02-05 01:26:46,265 | INFO     | root | base.py:38 | Data saved to data\load.csv
+2026-02-05 01:37:13,266 | INFO     | root | base.py:38 | Data saved to data\price.csv
+2026-02-05 01:37:34,156 | INFO     | root | base.py:38 | Data saved to data\price.csv
+2026-02-05 01:42:07,710 | INFO     | root | base.py:38 | Data saved to data\price.csv
+2026-02-05 01:53:18,624 | INFO     | root | base.py:39 | Data saved to data\generation.csv

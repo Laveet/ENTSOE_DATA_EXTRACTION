@@ -13,13 +13,13 @@ class EntsoeBaseFetcher():
         self.zone=zone
         self.start=start
         self.end=end
-    # @abstractmethod
+    @abstractmethod
     def params(self)->dict:
         pass
-    # @abstractmethod
+    @abstractmethod
     def read_xml(self, root: ET.Element)->pd.DataFrame:
         pass
-    # @abstractmethod
+    @abstractmethod
     def output_file(self)->str:
         pass
 
@@ -31,6 +31,7 @@ class EntsoeBaseFetcher():
             params['securityToken']=api_key
             response=requests.get(url=url,params=params)
             root=ET.fromstring(response.content)
+            print("root element is extracted")
             df=self.read_xml(root)
             file_path=os.path.join(data_path,self.output_file())
             

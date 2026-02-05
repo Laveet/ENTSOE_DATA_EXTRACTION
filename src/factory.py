@@ -2,6 +2,7 @@ from src.base import EntsoeBaseFetcher
 from src.price.price import PriceFetcher
 from src.load.load import LoadFetcher
 from src.exception import CustomException
+from src.generation.generation import GenerationFetcher
 import sys
 
 class DataFetcherFactory:
@@ -15,6 +16,9 @@ class DataFetcherFactory:
                 return PriceFetcher(zone,start,end)
             elif data_type == "load":
                 return LoadFetcher(zone,start,end)
+            elif data_type=="generation":
+                return GenerationFetcher(zone,start,end)
+
             else:
                 raise ValueError(f"Data type {data_type} is not supported yet.")
     except Exception as e:
@@ -34,4 +38,8 @@ class Get_Data:
     @staticmethod
     def load(zone: str, start: str, end: str):
         fetcher = DataFetcherFactory.create("load",zone,start,end)
+        return fetcher.fetch_data()
+    @staticmethod
+    def generation(zone: str, start: str, end: str):
+        fetcher = DataFetcherFactory.create("generation",zone,start,end)
         return fetcher.fetch_data()
